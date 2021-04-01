@@ -6,29 +6,26 @@ import C19307776.Properties;
 import java.util.Map;
 import C19307776.utils.*;
 
-public class StarshipLanding extends Scene {
+public class StarshipLandingMars extends Scene {
 	ImageAnimatable background;
-	ImageAnimatable launchPad;
 	ImageAnimatable engines1;
 	ImageAnimatable engines2;
 	ImageAnimatable engines3;
 	ImageAnimatable[] exhaustClouds = new ImageAnimatable[22];
 
-	public StarshipLanding(Visuals v) {
+	public StarshipLandingMars(Visuals v) {
 		this.sceneLength = 360;
 
 		//Intialise viewport units
 		VHVW d = new VHVW(v.width, v.height);
 
-		background = new ImageAnimatable(v, "assets/ocean.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f), "parallax", 0.001f));
-		launchPad = new ImageAnimatable(v, "assets/launch_platform.png", d.vw(40f), d.vh(50f), Map.of("prop", (float) d.vh(50f), "parallax", 0.001f));
-		engines1 = new ImageAnimatable(v, "assets/landing1engine.png", d.vw(65f), -d.vh(5f), Map.of("prop", (float) d.vw(20), "r", -90f, "parallax", 0.001f));
-		engines2 = new ImageAnimatable(v, "assets/landing2engine.png", d.vw(62f), d.vh(4f), Map.of("prop", (float) d.vw(20), "r", -90f, "parallax", 0.001f));
-		engines3 = new ImageAnimatable(v, "assets/landing3engine.png", d.vw(61.25f), d.vh(8.5f), Map.of("prop", (float) d.vw(20), "r", -90f, "parallax", 0.001f));
+		background = new ImageAnimatable(v, "assets/marsSurface.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f), "parallax", 0.001f));
+		engines1 = new ImageAnimatable(v, "assets/landing1engine.png", d.vw(65f), -d.vh(5f), Map.of("prop", (float) d.vw(40), "r", -90f, "parallax", 0.001f));
+		engines2 = new ImageAnimatable(v, "assets/landing2engine.png", d.vw(62f), d.vh(4f), Map.of("prop", (float) d.vw(40), "r", -90f, "parallax", 0.001f));
+		engines3 = new ImageAnimatable(v, "assets/landing3engine.png", d.vw(61.25f), d.vh(8.5f), Map.of("prop", (float) d.vw(40), "r", -90f, "parallax", 0.001f));
 
 		//Sets the duration of that sprites appear on the screen
 		background.setDuration(360);
-		launchPad.setDuration(360);
 		engines1.setDuration(30);
 		engines2.setDuration(30, 15);
 		engines3.setDuration(45, 315);
@@ -48,19 +45,15 @@ public class StarshipLanding extends Scene {
 		engines3.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(65f), "startTime", 105, "duration", 180), 0);
 
 		engines3.animateProperty(Map.of("property", Properties.ROTATION.getValue(), "to", (int) 0f, "startTime", 105, "duration", 60), 0);
-		//starship.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) -d.vh(10f), "startTime", 900, "duration", 300), 0);
-		//flame.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(71.82f), "startTime", 300, "duration", 600), -d.vh(0.0003f));
-		//flame.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) -d.vh(40f), "startTime", 900, "duration", 600), 0);
 
 		//Adding sprites to the scene
 		this.addToScene(background);
-		this.addToScene(launchPad);
 		this.addToScene(engines1);
 		this.addToScene(engines2);
 		this.addToScene(engines3);
 
 		for(int i = 0; i < 11; i++) {
-			exhaustClouds[i] = new ImageAnimatable(v, "assets/launch_cloud/frame"+i+".png", d.vw(50f), d.vh(67.5f), Map.of("prop", (float) d.vw(3f), "parallax", 0.001f));
+			exhaustClouds[i] = new ImageAnimatable(v, "assets/launch_cloud/frame"+i+".png", d.vw(50f), d.vh(75f), Map.of("prop", (float) d.vw(10f), "parallax", 0.001f));
 			exhaustClouds[i].setDuration(180+(i*15), 15);
 			this.addToScene(exhaustClouds[i]);
 		}

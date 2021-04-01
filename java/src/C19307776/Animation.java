@@ -18,7 +18,7 @@ public class Animation extends Visuals {
 		fullScreen(P3D);
 		//size(500, 300);
 	}
-	
+
 	public void setup() {
 		hint(DISABLE_TEXTURE_MIPMAPS);
 		background(0);
@@ -26,6 +26,7 @@ public class Animation extends Visuals {
 		scenes = new SceneManager();
 		//Adds scenes to the animation
 		scenes.addScene(new Intro(this));
+		scenes.addScene(new RIP(this));
 		scenes.addScene(new Takeoff(this));
 		scenes.addScene(new TakeOff2(this));
 		scenes.addScene(new Curvature(this));
@@ -39,6 +40,14 @@ public class Animation extends Visuals {
 		scenes.addScene(new BellyFlop2(this));
 		scenes.addScene(new BellyFlop3(this));
 		scenes.addScene(new StarshipLanding(this));
+		scenes.addScene(new ToMars(this));
+		scenes.addScene(new Transfer(this));
+		scenes.addScene(new MartianApproach(this));
+		scenes.addScene(new BellyFlopMars1(this));
+		scenes.addScene(new BellyFlopMars2(this));
+		scenes.addScene(new BellyFlopMars3(this));
+		scenes.addScene(new StarshipLandingMars(this));
+		scenes.addScene(new CityBuildLapse(this));
 		//scenes.addScene(new MarsSystem(this));
 		scenes.setCurrentScene(0);
 
