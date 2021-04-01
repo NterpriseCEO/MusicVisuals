@@ -59,7 +59,6 @@ public class Animatable {
 			lastX = props.get("to");
 		}else if(props.get("property") == Properties.YPOS.getValue()) {
 			val = lastY;
-			System.out.println(val);
 			if(acceleration > 0 || acceleration < 0) {
 				speedY = acceleration;
 			}
@@ -75,12 +74,8 @@ public class Animatable {
 		ArrayList<Float> arr = new ArrayList<Float>();
 		arr.add((float) props.get("duration"));
 		arr.add((float) props.get("property"));
-		if(props.get("property") == 3) {
-			System.out.println(Properties.YPOS.getValue()+" "+props.get("property")+" "+props.get("to")+" "+val);
-		}
 		arr.add((props.get("to")-val)/props.get("duration"));
 		if(acceleration > 0 || acceleration < 0) {
-			System.out.println(acceleration);
 			arr.add((float) acceleration);
 		}
 		//Check there is already animation starting at start time
@@ -129,10 +124,8 @@ public class Animatable {
 								}
 							}else if(props.get(1) == Properties.ROTATION.getValue()) {
 								this.rotation+=props.get(2);
-								//System.out.println(this.rotation);
 							}else if(props.get(1) == Properties.SCALE.getValue()) {
 								this.w = this.h+=props.get(2);
-								//System.out.println(this.rotation);
 							}
 						}else {
 							//Removes animation if completed
