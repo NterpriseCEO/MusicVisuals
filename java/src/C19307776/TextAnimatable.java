@@ -8,8 +8,9 @@ public class TextAnimatable extends Animatable {
 	int[] colour = new int[3];
 	float fonstSize;
 	String text;
-
+	//fs = fontSize, txt = text, r = rotation
 	public TextAnimatable(Visuals v, String txt, float fs, int[] colour, float x, float y, float r, float parallax) {
+		//The properties of a text object
 		this.v = v;
 
 		this.colour = colour;
@@ -24,14 +25,13 @@ public class TextAnimatable extends Animatable {
 		v.textAlign(v.CENTER);
 	}
 
-	public int getStartPoint() {
-		return this.startPoint;
-	}
-
+	//Animates the object each frame
 	public void animate() {
 		if(this.animateFrame()) {
 			v.fill(colour[0], colour[1], colour[2]);
 			v.textSize(this.fonstSize);
+			//Transforms between pushMatrix() and popMatrix() don't affect the transformation
+			//Of the rest of the animatables
 			v.pushMatrix();
 			v.translate(this.x+(v.mouseX*parallax), this.y+(v.mouseY*parallax));
 

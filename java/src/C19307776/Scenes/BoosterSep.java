@@ -6,10 +6,15 @@ import java.util.Map;
 import C19307776.Properties;
 import C19307776.utils.*;
 
+/*
+	Animation of starship separating from superheavy
+*/
+
 public class BoosterSep extends Scene {
 	ImageAnimatable stars;
 	ImageAnimatable superheavy;
 	ImageAnimatable starship;
+	ImageAnimatable thruster;
 
 	public BoosterSep(Visuals v) {
 
@@ -20,11 +25,14 @@ public class BoosterSep extends Scene {
 		stars = new ImageAnimatable(v, "assets/stars.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f)));
 		superheavy = new ImageAnimatable(v, "assets/superheavy_booster.png", d.vw(35f), d.vh(50f), Map.of("prop", (float) d.vw(32f), "r", 90f, "parallax", 0.003f));
 		starship = new ImageAnimatable(v, "assets/starship_upperstage.png", d.vw(62f), d.vh(50f), Map.of("prop", (float) d.vw(26f), "r", 90f, "parallax", 0.003f));
+		thruster = new ImageAnimatable(v, "assets/thruster.png", d.vw(47f), d.vh(57f), Map.of("prop", (float) d.vw(5f), "r", 180f, "parallax", 0.003f));
 
 		stars.setDuration(1000);
 		superheavy.setDuration(1000);
 		starship.setDuration(1000);
+		thruster.setDuration(60, 65);
 
+		//Animates starship and booster moving away and rotating
 		starship.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(80f), "startTime", 60, "duration", 940), 0);
 		superheavy.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(25), "startTime", 120, "duration", 800), 0);
 		superheavy.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(55), "startTime", 120, "duration", 800), 0);
@@ -33,5 +41,6 @@ public class BoosterSep extends Scene {
 		this.addToScene(stars);
 		this.addToScene(superheavy);
 		this.addToScene(starship);
+		this.addToScene(thruster);
 	}
 }

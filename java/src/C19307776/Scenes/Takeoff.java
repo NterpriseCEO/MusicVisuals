@@ -6,6 +6,10 @@ import C19307776.Properties;
 import java.util.Map;
 import C19307776.utils.*;
 
+/*
+	Animates starship taking of from the sea launch platform
+*/
+
 public class Takeoff extends Scene {
 
 	ImageAnimatable background;
@@ -21,9 +25,9 @@ public class Takeoff extends Scene {
 		VHVW d = new VHVW(v.width, v.height);
 
 		background = new ImageAnimatable(v, "assets/ocean.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f), "parallax", 0.001f));
-		launchPad = new ImageAnimatable(v, "assets/launch_platform.png", d.vw(40f), d.vh(50f), Map.of("prop", (float) d.vh(50f), "parallax", 0.001f));
+		launchPad = new ImageAnimatable(v, "assets/launch_platform.png", d.vw(40f), d.vh(50.5f), Map.of("prop", (float) d.vh(50f), "parallax", 0.001f));
 		starship = new ImageAnimatable(v, "assets/full_starship.png", d.vw(47f), d.vh(47f), Map.of("prop", (float) d.vw(26f), "parallax", 0.001f));
-		flame = new ImageAnimatable(v, "assets/flames.png", d.vw(47f), d.vh(72f), Map.of("prop", (float) d.vw(3f), "parallax", 0.001f));
+		flame = new ImageAnimatable(v, "assets/flames.png", d.vw(47f), d.vh(71.5f), Map.of("prop", (float) d.vw(3f), "parallax", 0.001f));
 
 		//Sets the duration of that sprites appear on the screen
 		background.setDuration(1100);
@@ -32,6 +36,7 @@ public class Takeoff extends Scene {
 		starship.setDuration(1100);
 
 		//Sprite animations
+		//Starship accelerates off the launch platform
 		starship.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(46.82f), "startTime", 300, "duration", 600), -d.vh(0.0003f));
 		starship.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) -d.vh(10f), "startTime", 900, "duration", 300), 0);
 		flame.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(71.82f), "startTime", 300, "duration", 600), -d.vh(0.0003f));
@@ -43,6 +48,7 @@ public class Takeoff extends Scene {
 		this.addToScene(launchPad);
 		this.addToScene(starship);
 
+		//An Exhaust cloud is animated when starship takes off
 		for(int i = 0; i < 11; i++) {
 			exhaustClouds[i] = new ImageAnimatable(v, "assets/launch_cloud/frame"+i+".png", d.vw(47f), d.vh(67.5f), Map.of("prop", (float) d.vw(3f), "parallax", 0.001f));
 			exhaustClouds[i].setDuration(300+(i*15), 15);

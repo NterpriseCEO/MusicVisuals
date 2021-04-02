@@ -7,6 +7,8 @@ public enum Properties {
 	private Properties(int value) {
 		this.value = value;
 	}
+	//Returns the value of a property
+	//Used to determine which animation property to animate
 	public int getValue() {
 		return value;
 	}

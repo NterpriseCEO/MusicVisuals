@@ -16,11 +16,13 @@ public class SceneManager {
 	private static int sceneNumber = 0;
 	//The current frame of the scene
 	private static int frames = 0;
+	private static int amount = 0;
 
 	protected boolean paused = false;
 
 	public void addScene(Scene scene) {
 		scenes.add(scene);
+		amount++;
 	}
 
 	public void setCurrentScene(int i) {
@@ -28,21 +30,20 @@ public class SceneManager {
 		currentScene = scenes.get(i);
 		sceneNumber = i;
 	}
+
+	//Returns the scene currently being animated
 	public int getCurrentScene() {
 		return sceneNumber;
 	}
+	//Returns the amount of scenes
+	public int getAmount() {
+		return amount;
+	}
 	public void nextScene() {
-		//Checks if playing last scene and changes scene to next
+		//Checks if animating the last scene and changes
+		//the scene to the next one if not
 		if(sceneNumber < scenes.size()-1) {
 			sceneNumber++;
-			currentScene = scenes.get(sceneNumber);
-			frames = 0;
-		}
-	}
-	public void previousScene() {
-		//Checks if playing last scene and changes scene to next
-		if(sceneNumber > 0) {
-			sceneNumber--;
 			currentScene = scenes.get(sceneNumber);
 			frames = 0;
 		}
@@ -54,7 +55,7 @@ public class SceneManager {
 		//Loops through objects in the scene
 		for(int i = 0; i < objects.size(); i++) {
 			//animates / renders the object if it is supposed
-			// to be on the screen at the given frame
+			//to be on the screen at the given frame
 			if(objects.get(i).getStartPoint() <= frames) {
 				objects.get(i).animate();
 			}
@@ -68,24 +69,14 @@ public class SceneManager {
 		}
 	}
 
+	//Loops through all the scenes and adds
+	//their lengths to get the total animation length
 	public int animationLength() {
 		int animLength = 0;
 		for(Scene scene: scenes) {
 			animLength+=scene.getSceneLength();
 		}
 		return animLength;
-	}
-
-	public int sceneStartPosition() {
-		int scenesLength = 0;
-		for(int i = 0; i < scenes.size(); i++) {
-			if(scenes.get(i) != scenes.get(sceneNumber-1)) {
-				scenesLength+=scenes.get(i).sceneLength;
-			}else {
-				break;
-			}
-		}
-		return scenesLength/60;
 	}
 
 	public int sceneEndPosition() {
@@ -101,16 +92,13 @@ public class SceneManager {
 		return scenesLength/60;
 	}
 
+	//Checks if the animation is paused
 	public boolean isPaused() {
 		return paused;
 	}
 
+	//Pauses the animation
 	public void setPaused(boolean paused) {
 		this.paused = paused;
 	}
-	
-	/*//Returns the currently animating scene
-	public Scene getCurrentScene() {
-		return currentScene;
-	}*/
 }

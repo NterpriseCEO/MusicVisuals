@@ -6,6 +6,10 @@ import java.util.Map;
 import C19307776.Properties;
 import C19307776.utils.*;
 
+/*
+	A side view of the bellyflop maneuver on Earth
+*/
+
 public class BellyFlop1 extends Scene{
 	ImageAnimatable starship;
 	ImageAnimatable background;
