@@ -8,6 +8,10 @@ import java.util.Map;
 import C19307776.Properties;
 import C19307776.utils.*;
 
+/*
+	Animates 2 starships docking together and transfering fuel
+*/
+
 public class StarshipRefuel extends Scene {
 	ImageAnimatable stars;
 	ImageAnimatable starship1;
@@ -31,7 +35,7 @@ public class StarshipRefuel extends Scene {
 		fuelIndicator1_1 = new ShapeAnimatable(v, new int[]{255, 0, 0}, d.vw(35f), d.vh(40f), Map.of("w", (float) d.vw(20f), "h", (float) d.vh(4f), "parallax", 0.003f));
 		fuelIndicator2 = new ShapeAnimatable(v, new int[]{0, 160, 0}, d.vw(50f), d.vh(40f), Map.of("w", (float) d.vw(5f), "h", (float) d.vh(4f), "parallax", 0.003f));
 		fuelIndicator2_1 = new ShapeAnimatable(v, new int[]{255, 0, 0}, d.vw(57.5f), d.vh(40f), Map.of("w", (float) d.vw(20f), "h", (float) d.vh(4f), "parallax", 0.003f));
-		fuel = new TextAnimatable(v, "Transferring Propellant", d.vw(2f), new int[]{255, 255, 255}, d.vw(45f), d.vh(41f), 0, 0.003f);
+		fuel = new TextAnimatable(v, "Transferring    Propellant", d.vw(2f), new int[]{255, 255, 255}, d.vw(45.2f), d.vh(41f), 0, 0.003f);
 
 		stars.setDuration(1620);
 		starship1.setDuration(1620);
@@ -42,13 +46,16 @@ public class StarshipRefuel extends Scene {
 		fuelIndicator2_1.setDuration(540, 600);
 		fuel.setDuration(540, 600);
 
+		//Animates starship #1 approaching starship #2
 		starship1.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(31.75f), "startTime", 0, "duration", 510), 0);
 
+		//Animates the fueling indicators (green / red lines above starship)
 		fuelIndicator1.animateProperty(Map.of("property", Properties.WIDTH.getValue(), "to", (int) d.vw(5f), "startTime", 0, "duration", 510), 0);
 		fuelIndicator1.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(27.5f), "startTime", 0, "duration", 510), 0);
 		fuelIndicator2.animateProperty(Map.of("property", Properties.WIDTH.getValue(), "to", (int) d.vw(20f), "startTime", 0, "duration", 510), 0);
 		fuelIndicator2.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(57.5f), "startTime", 0, "duration", 510), 0);
 
+		//Animates starship #1 rotating and falling away from starship #2
 		starship1.animateProperty(Map.of("property", Properties.ROTATION.getValue(), "to", (int) -100f, "startTime", 1140, "duration", 510), 0);
 		starship1.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(15f), "startTime", 1140, "duration", 510), 0);
 		starship1.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(100f), "startTime", 1140, "duration", 510), 0);

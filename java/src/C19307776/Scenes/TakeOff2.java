@@ -7,6 +7,10 @@ import C19307776.Properties;
 import java.util.Random;
 import C19307776.utils.*;
 
+/*
+	Animates starship ascending through the clouds
+*/
+
 public class TakeOff2 extends Scene {
 	ImageAnimatable starship;
 	ImageAnimatable flame;
@@ -27,6 +31,8 @@ public class TakeOff2 extends Scene {
 
 		this.addToScene(background);
 		
+		//Randomly positioned clouds
+		//Starship is stationary, clouds move instead
 		Random r = new Random();
 		for(int i = 0; i < 5; i++) {
 			float xPos = r.nextFloat()*100;

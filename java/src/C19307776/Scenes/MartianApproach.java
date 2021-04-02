@@ -6,6 +6,10 @@ import java.util.Map;
 import C19307776.Properties;
 import C19307776.utils.*;
 
+/*
+	Animate starship approaching Mars.
+*/
+
 
 public class MartianApproach extends Scene {
 	ImageAnimatable stars;
@@ -25,10 +29,13 @@ public class MartianApproach extends Scene {
 		mars.setDuration(900);
 		starship.setDuration(900);
 
+		//Animates  Mars getting bigger and moving to the left
 		mars.animateProperty(Map.of("property", Properties.SCALE.getValue(), "to", (int) d.vh(150f), "startTime", 0, "duration", 600), 0);
 		mars.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(20f), "startTime", 0, "duration", 600), 0);
 
-		starship.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(40f), "startTime", 0, "duration", 600), 0);
+		//Animates starship moving rightwards and finally getting smaller as it enters Mars' atmosphere
+		starship.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(60f), "startTime", 0, "duration", 900), 0);
+		starship.animateProperty(Map.of("property", Properties.SCALE.getValue(), "to", (int) -d.vw(10f), "startTime", 300, "duration", 600), 0);
 
 		this.addToScene(stars);
 		this.addToScene(mars);

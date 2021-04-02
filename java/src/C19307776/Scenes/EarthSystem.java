@@ -6,6 +6,10 @@ import C19307776.Properties;
 import java.util.Map;
 import C19307776.utils.*;
 
+/*
+	Starship moving accross the screen
+*/
+
 public class EarthSystem extends Scene{
 	ImageAnimatable stars;
 	ImageAnimatable earth;
@@ -23,10 +27,9 @@ public class EarthSystem extends Scene{
 		stars.setDuration(420);
 		earth.setDuration(420);
 		starship.setDuration(420);
-		//earth.animateProperty(Properties.XPOS.getValue(), 1500, 0, 600);
-		//earth.animateProperty(Properties.YPOS.getValue(), 0, 0, 600);
+
+		//Animate starship moving from point across the screen in front of earth
 		starship.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(60f), "startTime", 0, "duration", 420), 0);
-		//starship.animateProperty(Properties.ROTATION.getValue(), 36000, 0, 120);
 		
 		this.addToScene(stars);
 		this.addToScene(earth);

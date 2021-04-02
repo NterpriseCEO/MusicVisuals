@@ -7,6 +7,10 @@ import C19307776.Properties;
 import java.util.Random;
 import C19307776.utils.*;
 
+/*
+	Animation of the superheavy booster falling through the clouds.
+*/
+
 public class BoosterReturn extends Scene {
 	ImageAnimatable superheavy;
 	ImageAnimatable background;
@@ -18,13 +22,13 @@ public class BoosterReturn extends Scene {
 
 		background = new ImageAnimatable(v, "assets/sky.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f), "parallax", 0.001f));
 		superheavy = new ImageAnimatable(v, "assets/superheavy_booster.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vh(80f), "r", 5f, "parallax", 0.003f));
-		//flame = new ImageAnimatable(v, "assets/flames.png", d.vw(50f), d.vh(90f), Map.of("prop", (float) d.vw(5f), "parallax", 0.001f));
 
 		background.setDuration(300);
 		superheavy.setDuration(300);
 
 		this.addToScene(background);
 		
+		//Randomly positioned clouds
 		Random r = new Random();
 		for(int i = 0; i < 5; i++) {
 			float xPos = r.nextFloat()*100;
@@ -37,6 +41,7 @@ public class BoosterReturn extends Scene {
 
 		this.addToScene(superheavy);
 
+		//Randomly positioned clouds
 		for(int i = 0; i < 5; i++) {
 			float xPos = r.nextFloat()*100;
 			float yPos = 200 + r.nextFloat()*100;

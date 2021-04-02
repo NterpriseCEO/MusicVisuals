@@ -15,6 +15,7 @@ public class Song {
 	//status of clip
 	String status;
 	int animationLength = 0;
+	private static boolean paused = false;
 
 	AudioInputStream audioInputStream;
 
@@ -25,25 +26,35 @@ public class Song {
 
 		this.animationLength = animationLength;
 
-
 		//creates reference to clip
 		clip = AudioSystem.getClip();
 		//this opens the audioInputStream to the clip
 		clip.open(audioInputStream);
-		//This loops the clip infinitely
-		clip.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
+	//Skips to a certain part of the song
 	public void skipTo(int s) {
 		clip.setMicrosecondPosition(s*1000000);
 	}
 
-	//Plays the audio clip
-	public void play() {
-		clip.start();
+	//Checks if the video is paused
+	public boolean getPaused() {
+		return paused;
 	}
 
+	//Plays the audio clip
+	public void play() {
+		paused = false;
+		clip.start();
+	}
+	//Pauses the audio clip
+	public void pause() {
+		paused = true;
+		clip.stop();
+	}
+	//Toggles whether or not the video is paused
 	public void toggle() {
+		paused = !paused;
 		if(clip.isActive()) {
 			clip.stop();
 		}else {

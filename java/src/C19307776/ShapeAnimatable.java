@@ -8,6 +8,7 @@ public class ShapeAnimatable extends Animatable {
 	int[] colour = new int[3];
 
 	public ShapeAnimatable(Visuals v, int[] colour, float x, float y, Map<String, Float> props) {
+		//The shapes properties
 		this.v = v;
 
 		this.colour = colour;
@@ -34,12 +35,14 @@ public class ShapeAnimatable extends Animatable {
 		return this.startPoint;
 	}
 
+	//Animates the shape every frame
 	public void animate() {
 		if(this.animateFrame()) {
+			//RGB colour
 			v.fill(colour[0], colour[1], colour[2]);
 			v.pushMatrix();
 			v.translate(this.x+(v.mouseX*parallax), this.y+(v.mouseY*parallax));
-			//v.translate(0, 0);
+
 			//Checks if rotation = 0
 			if(this.rotation != 0) {
 				//Rotates the sprite

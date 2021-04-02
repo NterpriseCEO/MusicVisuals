@@ -6,6 +6,10 @@ import C19307776.Properties;
 import java.util.Map;
 import C19307776.utils.*;
 
+/*
+	The booster landing on the sea platform.
+*/
+
 public class BoosterLanding extends Scene{
 
 	ImageAnimatable background;
@@ -21,7 +25,7 @@ public class BoosterLanding extends Scene{
 		VHVW d = new VHVW(v.width, v.height);
 
 		background = new ImageAnimatable(v, "assets/ocean.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f), "parallax", 0.001f));
-		launchPad = new ImageAnimatable(v, "assets/launch_platform.png", d.vw(40f), d.vh(50f), Map.of("prop", (float) d.vh(50f), "parallax", 0.001f));
+		launchPad = new ImageAnimatable(v, "assets/launch_platform.png", d.vw(40f), d.vh(50.5f), Map.of("prop", (float) d.vh(50f), "parallax", 0.001f));
 		starship = new ImageAnimatable(v, "assets/superheavy_booster.png", d.vw(47f), -d.vh(10f), Map.of("prop", (float) d.vw(15f), "parallax", 0.001f));
 		flame = new ImageAnimatable(v, "assets/flames.png", d.vw(47f), d.vh(62f), Map.of("prop", (float) d.vw(3f), "parallax", 0.001f));
 
@@ -32,9 +36,11 @@ public class BoosterLanding extends Scene{
 		starship.setDuration(1100);
 
 		//Sprite animations
+		//Animates the starship from the top of the screen to the centre
 		starship.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(47f), "startTime", 0, "duration", 180), 0);
 		starship.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(57f), "startTime", 180, "duration", 120), 0);
-		flame.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(72f), "startTime", 0, "duration", 120), 0);
+		//Animates the rocket exhaust the same way
+		flame.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(71.5f), "startTime", 0, "duration", 120), 0);
 
 		//Adding sprites to the scene
 		this.addToScene(background);

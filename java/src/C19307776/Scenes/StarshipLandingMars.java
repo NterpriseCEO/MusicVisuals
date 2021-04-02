@@ -6,6 +6,10 @@ import C19307776.Properties;
 import java.util.Map;
 import C19307776.utils.*;
 
+/*
+	Aniamtes starship landing on mars
+*/
+
 public class StarshipLandingMars extends Scene {
 	ImageAnimatable background;
 	ImageAnimatable engines1;
@@ -31,6 +35,7 @@ public class StarshipLandingMars extends Scene {
 		engines3.setDuration(45, 315);
 
 		//Sprite animations
+		//Animate starship coming down from the sky and moving leftward
 		engines1.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(4f), "startTime", 0, "duration", 30), 0);
 		engines1.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(62f), "startTime", 0, "duration", 30), 0);
 
@@ -40,8 +45,10 @@ public class StarshipLandingMars extends Scene {
 		engines3.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(50f), "startTime", 0, "duration", 105), 0);
 		engines3.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", (int) d.vw(50f), "startTime", 0, "duration", 105), 0);
 
+		//Animates starship rotating from horizontal to vertical
 		engines3.animateProperty(Map.of("property", Properties.ROTATION.getValue(), "to", (int) 10f, "startTime", 0, "duration", 120), 0);
 
+		//Animates starship rotating from mostly to completely vertial and landing on the martian regolith
 		engines3.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", (int) d.vh(65f), "startTime", 105, "duration", 180), 0);
 
 		engines3.animateProperty(Map.of("property", Properties.ROTATION.getValue(), "to", (int) 0f, "startTime", 105, "duration", 60), 0);
@@ -52,6 +59,7 @@ public class StarshipLandingMars extends Scene {
 		this.addToScene(engines2);
 		this.addToScene(engines3);
 
+		//Animates dust picked up on landing of starship
 		for(int i = 0; i < 11; i++) {
 			exhaustClouds[i] = new ImageAnimatable(v, "assets/launch_cloud/frame"+i+".png", d.vw(50f), d.vh(75f), Map.of("prop", (float) d.vw(10f), "parallax", 0.001f));
 			exhaustClouds[i].setDuration(180+(i*15), 15);

@@ -44,7 +44,7 @@ public class Animatable {
 	public void animateProperty(Map<String, Integer> props, float acceleration) {
 		//int property, float to, int startTime, int duration
 		float val = 0;
-		//determine which property is being run
+		//determine which property is being animated
 		if(props.get("property") == Properties.WIDTH.getValue()) {
 			val = lastWidth;
 			lastWidth = props.get("to");
@@ -74,6 +74,7 @@ public class Animatable {
 		ArrayList<Float> arr = new ArrayList<Float>();
 		arr.add((float) props.get("duration"));
 		arr.add((float) props.get("property"));
+		//Adds the acceleration property if added constructor
 		arr.add((props.get("to")-val)/props.get("duration"));
 		if(acceleration > 0 || acceleration < 0) {
 			arr.add((float) acceleration);
@@ -108,18 +109,21 @@ public class Animatable {
 							}else if(props.get(1) == Properties.HEIGHT.getValue()) {
 								this.h+=props.get(2);
 							}else if(props.get(1) == Properties.XPOS.getValue()) {
-								//this.x+=props.get(2);
+								//Acceleration
 								if(props.size() == 4) {
 									speedX+=props.get(3);
 									this.x+=speedX;
 								}else {
+									//Linear speed
 									this.x+=props.get(2);
 								}
 							}else if(props.get(1) == Properties.YPOS.getValue()) {
+								//Acceleration
 								if(props.size() == 4) {
 									speedY+=props.get(3);
 									this.y+=speedY;
 								}else {
+									//Linear speed
 									this.y+=props.get(2);
 								}
 							}else if(props.get(1) == Properties.ROTATION.getValue()) {
@@ -153,6 +157,7 @@ public class Animatable {
 		this.maxFrames = duration;
 	}
 
+	//Returns the frame that the object starts appearing onscreen
 	public int getStartPoint() {
 		return this.startPoint;
 	}
