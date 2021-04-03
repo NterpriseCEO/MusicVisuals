@@ -76,7 +76,7 @@ This is an image using an absolute URL:
 
 This is a youtube video:
 
-[![YouTube(http://i3.ytimg.com/vi/hmsI0MLR1Ko/maxresdefault.jpg)]](https://www.youtube.com/watch?v=hmsI0MLR1Ko)
+[![](http://img.youtube.com/vi/hmsI0MLR1Ko/0.jpg)](http://www.youtube.com/watch?v=hmsI0MLR1Ko "My video demonstration")
 
 This is a table:
 
