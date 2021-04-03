@@ -97,7 +97,7 @@ public class Animation extends Visuals {
 			donau.toggle();
 		}
 		//Toggles the visibility of the command dialogue
-		if(key == 'c') {
+		if(key == 'c' && !scenes.isPaused()) {
 			scenes.setPaused(!scenes.isPaused());
 			donau.toggle();
 			commandsShown = !commandsShown;
