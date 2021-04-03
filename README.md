@@ -4,7 +4,7 @@ Name: Alex Nuzum
 
 Student Number: C19307776
 
-# Description of the assignment
+## Description of the assignment
 This is an animation of starship launching from earth, refueling in orbit and then flying to mars.
 The first song in the youtube video (listed below) is my own song named "Interesting Title". The
 second song is An der Schönen Blauen Donau by Johann Strauss II.
@@ -20,7 +20,7 @@ second song is An der Schönen Blauen Donau by Johann Strauss II.
 	- Space bar: play / pause the animation
 	- S: take screenshot of the animation
 
-# How it works
+## How it works
 The animation is divided into multiple scenes which contain multiple animated objects.
 These objects can have different properties such as width, height etc which can be animated
 at different points in the scene. The music is plaued in the background and the animations
